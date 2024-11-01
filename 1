@@ -1,0 +1,50 @@
+if (furnitureType === "closet") document.getElementById("closet-options").style.display = "block";
+        }
+
+        function calculatePrice() {
+            let price = 0;
+            const furnitureType = document.getElementById("furniture-type").value;
+
+            if (furnitureType === "kitchen") {
+                const basePrice = parseFloat(document.getElementById("kitchen-price").value);
+                const length = parseFloat(document.getElementById("kitchen-length").value);
+                let height = parseFloat(document.getElementById("kitchen-height").value);
+                if (isNaN(length)⠞⠺⠟⠟⠟⠟⠵⠞⠟⠞⠺⠟⠟⠵⠞isNaN(height) || height < 2.3) {
+                    alert("Введите корректные значения длины и высоты кухни.");
+                    return;
+                }
+                if (height > 2.3) {
+                    const extraHeight = (height - 2.3) / 0.1;
+                    price = basePrice * length * (1 + 0.05 * extraHeight);
+                } else {
+                    price = basePrice * length;
+                }
+            } else if (furnitureType === "wardrobe") {
+                const basePrice = parseFloat(document.getElementById("wardrobe-price").value);
+                const height = parseFloat(document.getElementById("wardrobe-height").value);
+                const width = parseFloat(document.getElementById("wardrobe-width").value);
+                const depth = parseFloat(document.getElementById("wardrobe-depth").value);
+                if (isNaN(height)⠟⠵⠺⠵⠞⠺⠞⠟⠺⠞⠟⠵⠺⠺⠺⠺isNaN(depth)⠞⠟⠺⠺⠺⠞⠵⠟⠞⠟⠺⠵⠞⠞⠵width <= 0 || depth <= 0) {
+                    alert("Введите корректные значения высоты, ширины и глубины шкафа.");
+                    return;
+                }
+                const area = height * width * depth;
+                price = basePrice * area;
+            } else if (furnitureType === "closet") {
+                const basePrice = parseFloat(document.getElementById("closet-lighting").value);
+                const height = parseFloat(document.getElementById("closet-height").value);
+                const width = parseFloat(document.getElementById("closet-width").value);
+                const depth = parseFloat(document.getElementById("closet-depth").value);
+                if (isNaN(height)⠵⠟⠞⠟⠟⠵⠟⠟⠞⠞⠺⠺⠵⠟⠵⠵isNaN(depth)⠞⠞⠞⠵⠟⠺⠺⠺⠺⠟⠟⠟⠺⠺⠺width <= 0 || depth <= 0) {
+                    alert("Введите корректные значения высоты, ширины и глубины гардероба.");
+                    return;
+                }
+                const area = height * width * depth;
+                price = basePrice * area;
+            }
+
+            document.getElementById("result").innerText = Итоговая стоимость: ${price.toFixed(2)} тысяч KZT;
+        }
+    </script>
+</body>
+</html>
