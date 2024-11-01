@@ -9,7 +9,7 @@
         label, select, input { display: block; margin: 10px 0; }
     </style>
 </head>
-<body>
+<body onload="updateForm()">
     <h1>Калькулятор стоимости мебели</h1>
 
     <form id="furniture-calculator">
@@ -77,7 +77,7 @@
             document.getElementById("closet-options").style.display = "none";
             const furnitureType = document.getElementById("furniture-type").value;
             if (furnitureType === "kitchen") document.getElementById("kitchen-options").style.display = "block";
-if (furnitureType === "wardrobe") document.getElementById("wardrobe-options").style.display = "block";
+            if (furnitureType === "wardrobe") document.getElementById("wardrobe-options").style.display = "block";
             if (furnitureType === "closet") document.getElementById("closet-options").style.display = "block";
         }
 
@@ -104,7 +104,8 @@ if (furnitureType === "wardrobe") document.getElementById("wardrobe-options").st
                 const height = parseFloat(document.getElementById("wardrobe-height").value);
                 const width = parseFloat(document.getElementById("wardrobe-width").value);
                 const depth = parseFloat(document.getElementById("wardrobe-depth").value);
-                if (isNaN(height) for="kitchen-price"isNaN(depth)ml>
+                if (isNaN(height);">
+            <labisNaN(depth)ml>
 <html lang="ru"width <= 0 || depth <= 0) {
                     alert("Введите корректные значения высоты, ширины и глубины шкафа.");
                     return;
@@ -116,7 +117,8 @@ if (furnitureType === "wardrobe") document.getElementById("wardrobe-options").st
                 const height = parseFloat(document.getElementById("closet-height").value);
                 const width = parseFloat(document.getElementById("closet-width").value);
                 const depth = parseFloat(document.getElementById("closet-depth").value);
-                if (isNaN(height)   <option value="clisNaN(depth)ml>
+                if (isNaN(height)каф</option>
+       isNaN(depth)ml>
 <html lang="ru"width <= 0 || depth <= 0) {
                     alert("Введите корректные значения высоты, ширины и глубины гардероба.");
                     return;
