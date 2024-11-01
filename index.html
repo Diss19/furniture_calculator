@@ -1,4 +1,81 @@
-if (furnitureType === "closet") document.getElementById("closet-options").style.display = "block";
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор стоимости мебели</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; }
+        label, select, input { display: block; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Калькулятор стоимости мебели</h1>
+
+    <form id="furniture-calculator">
+        <label for="furniture-type">Выберите тип мебели:</label>
+        <select id="furniture-type" onchange="updateForm()">
+            <option value="kitchen">Кухня</option>
+            <option value="wardrobe">Шкаф</option>
+            <option value="closet">Гардероб</option>
+        </select>
+
+        <div id="kitchen-options">
+            <label for="kitchen-price">Ценовой сегмент кухни (за погонный метр):</label>
+            <select id="kitchen-price">
+                <option value="130">Эконом (130 000)</option>
+                <option value="270">Стандарт (270 000)</option>
+                <option value="400">Премиум (от 400 000)</option>
+            </select>
+            <label for="kitchen-length">Длина кухни (в метрах):</label>
+            <input type="number" id="kitchen-length" min="1" placeholder="Введите длину кухни">
+            <label for="kitchen-height">Высота кухни (в метрах):</label>
+            <input type="number" id="kitchen-height" min="2.3" step="0.1" value="2.3">
+        </div>
+
+        <div id="wardrobe-options" style="display:none;">
+            <label for="wardrobe-price">Ценовой сегмент шкафа (за квадратный метр):</label>
+            <select id="wardrobe-price">
+                <option value="65">Эконом (65 000)</option>
+                <option value="75">Стандарт (75 000)</option>
+                <option value="85">Премиум (от 85 000)</option>
+            </select>
+            <label for="wardrobe-height">Высота шкафа (в метрах):</label>
+            <input type="number" id="wardrobe-height" min="1" placeholder="Введите высоту шкафа">
+            <label for="wardrobe-width">Ширина шкафа (в метрах):</label>
+            <input type="number" id="wardrobe-width" min="0.1" placeholder="Введите ширину шкафа">
+            <label for="wardrobe-depth">Глубина шкафа (в метрах):</label>
+            <input type="number" id="wardrobe-depth" min="0.1" placeholder="Введите глубину шкафа">
+        </div>
+
+        <div id="closet-options" style="display:none;">
+            <label for="closet-lighting">Освещение в гардеробе:</label>
+            <select id="closet-lighting">
+                <option value="65">С освещением (65 000 за кв. метр)</option>
+                <option value="55">Без освещения (55 000 за кв. метр)</option>
+            </select>
+            <label for="closet-height">Высота гардероба (в метрах):</label>
+            <input type="number" id="closet-height" min="1" placeholder="Введите высоту гардероба">
+            <label for="closet-width">Ширина гардероба (в метрах):</label>
+            <input type="number" id="closet-width" min="0.1" placeholder="Введите ширину гардероба">
+            <label for="closet-depth">Глубина гардероба (в метрах):</label>
+            <input type="number" id="closet-depth" min="0.1" placeholder="Введите глубину гардероба">
+        </div>
+
+        <button type="button" onclick="calculatePrice()">Рассчитать стоимость</button>
+    </form>
+
+    <h2 id="result">Итоговая стоимость: -</h2>
+
+    <script>
+        function updateForm() {
+            document.getElementById("kitchen-options").style.display = "none";
+            document.getElementById("wardrobe-options").style.display = "none";
+            document.getElementById("closet-options").style.display = "none";
+            const furnitureType = document.getElementById("furniture-type").value;
+            if (furnitureType === "kitchen") document.getElementById("kitchen-options").style.display = "block";
+            if (furnitureType === "wardrobe") document.getElementById("wardrobe-options").style.display = "block";
+                if (furnitureType === "closet") document.getElementById("closet-options").style.display = "block";
         }
 
         function calculatePrice() {
@@ -9,7 +86,7 @@ if (furnitureType === "closet") document.getElementById("closet-options").style.
                 const basePrice = parseFloat(document.getElementById("kitchen-price").value);
                 const length = parseFloat(document.getElementById("kitchen-length").value);
                 let height = parseFloat(document.getElementById("kitchen-height").value);
-                if (isNaN(length)⠞⠺⠟⠟⠟⠟⠵⠞⠟⠞⠺⠟⠟⠵⠞isNaN(height) || height < 2.3) {
+                if (isNaN(length) || length <= 0 || isNaN(height) || height < 2.3) {
                     alert("Введите корректные значения длины и высоты кухни.");
                     return;
                 }
@@ -24,7 +101,9 @@ if (furnitureType === "closet") document.getElementById("closet-options").style.
                 const height = parseFloat(document.getElementById("wardrobe-height").value);
                 const width = parseFloat(document.getElementById("wardrobe-width").value);
                 const depth = parseFloat(document.getElementById("wardrobe-depth").value);
-                if (isNaN(height)⠟⠵⠺⠵⠞⠺⠞⠟⠺⠞⠟⠵⠺⠺⠺⠺isNaN(depth)⠞⠟⠺⠺⠺⠞⠵⠟⠞⠟⠺⠵⠞⠞⠵width <= 0 || depth <= 0) {
+                if (isNaN(height) метр):</label>
+    isNaN(depth)ml>
+<html lang="ru"width <= 0 || depth <= 0) {
                     alert("Введите корректные значения высоты, ширины и глубины шкафа.");
                     return;
                 }
@@ -35,7 +114,8 @@ if (furnitureType === "closet") document.getElementById("closet-options").style.
                 const height = parseFloat(document.getElementById("closet-height").value);
                 const width = parseFloat(document.getElementById("closet-width").value);
                 const depth = parseFloat(document.getElementById("closet-depth").value);
-                if (isNaN(height)⠵⠟⠞⠟⠟⠵⠟⠟⠞⠞⠺⠺⠵⠟⠵⠵isNaN(depth)⠞⠞⠞⠵⠟⠺⠺⠺⠺⠟⠟⠟⠺⠺⠺width <= 0 || depth <= 0) {
+                if (isNaN(height)   <option value="clisNaN(depth)ml>
+<html lang="ru"width <= 0 || depth <= 0) {
                     alert("Введите корректные значения высоты, ширины и глубины гардероба.");
                     return;
                 }
@@ -43,7 +123,10 @@ if (furnitureType === "closet") document.getElementById("closet-options").style.
                 price = basePrice * area;
             }
 
-            document.getElementById("result").innerText = Итоговая стоимость: ${price.toFixed(2)} тысяч KZT;
+            document.getElementById("result").innerText =lay: block; margin: 10px 0; }
+    </style>
+</head>
+<b
         }
     </script>
 </body>
